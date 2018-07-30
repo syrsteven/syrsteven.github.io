@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>LCA | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="tarjan1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;">
+<meta name="keywords" content="LCA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LCA">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/LCA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tarjan1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-26T08:12:53.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LCA">
+<meta name="twitter:description" content="tarjan1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LCA" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/26/LCA/" class="article-date">
+  <time datetime="2018-07-26T08:11:49.000Z" itemprop="datePublished">2018-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LCA
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="tarjan"><a href="#tarjan" class="headerlink" title="tarjan"></a>tarjan</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,q,rt;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type&gt;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(Type &amp;xx)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Type f=<span class="number">1</span>;<span class="keyword">char</span> ch;xx=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(ch=getchar();ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>;ch=getchar())<span class="keyword">if</span>(ch==<span class="string">'-'</span>)f=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>;ch=getchar())xx=xx*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">    xx*=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> ne,to,w;</span><br><span class="line">&#125;ed[<span class="number">1000010</span>];</span><br><span class="line">node e[<span class="number">1000010</span>];</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">2</span>][<span class="number">500100</span>],cnt,tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ed[++cnt].to=v;</span><br><span class="line">	ed[cnt].ne=head[<span class="number">0</span>][u];</span><br><span class="line">	head[<span class="number">0</span>][u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">adde</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	e[++tot].to=v;</span><br><span class="line">	e[tot].ne=head[<span class="number">1</span>][u];</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">	head[<span class="number">1</span>][u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">500100</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (fa[x]==x)?x:fa[x]=get(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">500100</span>],ans[<span class="number">500100</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vis[x]=<span class="number">1</span>;</span><br><span class="line">	fa[x]=x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[<span class="number">1</span>][x];i;i=e[i].ne)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=e[i].to,w=e[i].w;</span><br><span class="line">		<span class="keyword">if</span>(vis[v])</span><br><span class="line">			ans[w]=get(v);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[<span class="number">0</span>][x];i;i=ed[i].ne)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=ed[i].to;</span><br><span class="line">		<span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">		tarjan(v);</span><br><span class="line">		fa[v]=x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	read(n),read(q),read(rt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		read(u),read(v);</span><br><span class="line">		add(u,v);</span><br><span class="line">		add(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		read(u),read(v);</span><br><span class="line">		adde(u,v,i);</span><br><span class="line">		adde(v,u,i);</span><br><span class="line">	&#125;</span><br><span class="line">	tarjan(rt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><pre><code>tarjan的基本思路基于DFS，是一种离线算法,时间复杂度为Θ（m+q）m边数，q询问数。
+从根节点一路走到叶子节点。如果询问（u,v），u为当前节点，vis[v]!=0。
+说明已经走过LCA(u,v)。并继续遍历LCA（u,v）的子树。
+</code></pre><h1 id="RMQ"><a href="#RMQ" class="headerlink" title="RMQ"></a>RMQ</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> ne,to;</span><br><span class="line">&#125;edge[<span class="number">1001000</span>];</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">500100</span>],cnt,n,q,rt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[++cnt].to=v;</span><br><span class="line">    edge[cnt].ne=head[u];</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dfn[<span class="number">1001000</span>],first[<span class="number">500100</span>],tot,vis[<span class="number">500100</span>],deep[<span class="number">500100</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[++tot]=x;</span><br><span class="line">    first[x]=tot;</span><br><span class="line">    vis[x]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[x];i;i=edge[i].ne)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v=edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        deep[v]=deep[x]+<span class="number">1</span>;		</span><br><span class="line">        dfs(v);</span><br><span class="line">        dfn[++tot]=x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">1000100</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">st</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfs(rt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)</span><br><span class="line">        dp[<span class="number">0</span>][i]=dfn[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=tot;i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j+(<span class="number">1</span>&lt;&lt;i)&lt;=tot+<span class="number">1</span>;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a=dp[i<span class="number">-1</span>][j],b=dp[i<span class="number">-1</span>][j+(<span class="number">1</span>&lt;&lt;i<span class="number">-1</span>)];</span><br><span class="line">        dp[i][j]=(deep[a]&lt;deep[b])?a:b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">RMQ</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k=log2(b-a+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> x=dp[k][a],y=dp[k][b-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> deep[x]&gt;deep[y]?y:x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=first[u],b=first[v];</span><br><span class="line">    <span class="keyword">if</span>(a&gt;b) swap(a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,RMQ(a,b));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;q,&amp;rt);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u,v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">        add(u,v);</span><br><span class="line">        add(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">    st();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u,v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">        LCA(u,v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="理解：-1"><a href="#理解：-1" class="headerlink" title="理解："></a>理解：</h3><pre><code>RMQ解LCA是在线的算法。先将树预处理出其DFS序，LCA（U,V）一定在dfs序u和v之间。
+用RMQ预处理出每段区间中深度最小的点就是他的LCA。
+</code></pre><h1 id="倍增法"><a href="#倍增法" class="headerlink" title="倍增法"></a>倍增法</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,ne;</span><br><span class="line">&#125;edge[<span class="number">1000010</span>];</span><br><span class="line"><span class="keyword">int</span> head[<span class="number">500010</span>],cnt,n,rt,q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[++cnt].to=v;</span><br><span class="line">    edge[cnt].ne=head[u];</span><br><span class="line">    head[u]=cnt; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">20</span>][<span class="number">500001</span>],dis[<span class="number">500010</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=edge[i].ne)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=edge[i].to;</span><br><span class="line">		<span class="keyword">if</span>(v==fa[<span class="number">0</span>][u]) <span class="keyword">continue</span>;</span><br><span class="line">		dis[v]=dis[u]+<span class="number">1</span>;</span><br><span class="line">		fa[<span class="number">0</span>][v]=u;</span><br><span class="line">		dfs(v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dfs(rt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">	fa[i][j]=fa[i<span class="number">-1</span>][fa[i<span class="number">-1</span>][j]];</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dis[a]&gt;dis[b]) swap(a,b);</span><br><span class="line">	<span class="keyword">int</span> c=dis[b]-dis[a];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=c;i++)<span class="comment">//i从0开始 </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;i)&amp;c) b=fa[i][b];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(a!=b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=(<span class="keyword">int</span>)log2(n);i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">		<span class="keyword">if</span>(fa[i][a]!=fa[i][b]) a=fa[i][a],b=fa[i][b];</span><br><span class="line">		a=fa[<span class="number">0</span>][a];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;q,&amp;rt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[<span class="number">0</span>][i]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;u,&amp;v);</span><br><span class="line">		add(u,v);</span><br><span class="line">		add(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;u,&amp;v);</span><br><span class="line">		LCA(u,v);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="理解：-2"><a href="#理解：-2" class="headerlink" title="理解："></a>理解：</h3><pre><code>一遍dfs处理出每个点的父亲。然后预处理出每个点往上跳2^i个点的父亲。
+开始LCA时，先把两个点的深度跳到一样。然后从大到小（2^n~2^0）跳，如果fa[i][a]==fa[i][b]说明跳过了，不更新b，a，最后fa[0][a]就是他们的LCA。
+</code></pre><h2 id="提醒："><a href="#提醒：" class="headerlink" title="提醒："></a>提醒：</h2><pre><code>遇到大数据，输入输出一定要用scanf()和printf()。把cout换为printf()快了将近2000ms。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/26/LCA/" data-id="cjk7zcrs00000w4uzwqh4omns" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LCA/">LCA</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LCA/" style="font-size: 10px;">LCA</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/26/LCA/">LCA</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/26/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
