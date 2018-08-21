@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Day18 | steven7</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Day18</h1><a id="logo" href="/.">steven7</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Day18</h1><div class="post-meta">Aug 21, 2018</div><div class="post-content"><h1 id="1．魔法少女小焰"><a href="#1．魔法少女小焰" class="headerlink" title="1．魔法少女小焰"></a>1．魔法少女小焰</h1><pre><code>(flame.cpp)
+【时空限制】
+时间限制：1s
+空间限制：128MB
+【问题描述】
+“谁都无法相信未来，谁都无法接受未来。”
+“越是重复，就越是偏离你和我生活过的时间。心意也相互偏离，言语也渐渐无法相通。
+我想我大概早已经迷路了。
+“要拯救你，这是我最初的心意，而到如今，这是最后留下的唯一路标。”
+“轮回，无论几次，我依然选择轮回，无数次的探寻，寻找唯一的出口，寻找能将你从
+绝望命运中拯救出来的道路。鹿目圆，我唯一的朋友，为了你，即使陷入永恒的迷宫，我也
+会毫不介意！”
+“这才是人类情感的极致，比希望更火热，比绝望更深切的东西——是爱。”
+晓美焰为了拯救自己唯一的朋友鹿目圆，使之避免称为魔法少女的命运，在平行时空中
+不断地穿梭轮回。
+假设有 N 个平行时空，每时空都有一个维数，编号为 i 的时空的维数是𝑎௜，为了避免
+跨越维数相差较大的时空引起自身的毁灭，晓美焰每次只能跨越维数相差不超过 D 的时空。
+晓美焰可以从任意一个时空开始跨越，且只能从编号较小的时空跨越到编号较大的时空，
+求她能跨越的最大时空数。
+【输入格式】
+第一行两个正整数 N,D
+第二行 N 个整数表示编号为 i 的时空的维度𝑎௜
+【输出格式】
+一个整数表示答案
+【输入输出样例 1】
+flame.in 
+6 3
+5 7 3 6 10 9
+flame.out
+4
+【输入输出样例 2】
+flame.in 
+8 6
+4 7 9 5 8 1 9 10
+flame.out
+7
+【数据范围】
+对于 30%的数据，N ≤ 10
+对于 60%的数据，N ≤ 2000
+对于 100%的数据，N, |𝑎i| ≤ 10^5, 0 ≤ D ≤ 100//注意a可小于零
+</code></pre><h4 id="n-2dp-60分"><a href="#n-2dp-60分" class="headerlink" title="n^2dp(60分)"></a>n^2dp(60分)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,d;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">100010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"flame.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"flame.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;d);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)dp[i]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">abs</span>(a[i]-a[j])&lt;=d) dp[i]=max(dp[i],dp[j]+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	ans=max(ans,dp[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="nd-pd-100分"><a href="#nd-pd-100分" class="headerlink" title="nd pd(100分)"></a>nd pd(100分)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> dp[N*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> n,d;</span><br><span class="line"><span class="keyword">int</span> a[N],mx;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"flame.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"flame.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;d);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),a[i]+=N,mx=max(a[i],mx);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[a[i]]++;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=a[i]-d;j&lt;=a[i]+d&amp;&amp;j&lt;=mx;j++)</span><br><span class="line">		<span class="keyword">if</span>(j!=a[i]&amp;&amp;j&gt;<span class="number">0</span>)dp[a[i]]=max(dp[a[i]],dp[j]+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=mx;i++) ans=max(ans,dp[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2．尼伯龙根之歌"><a href="#2．尼伯龙根之歌" class="headerlink" title="2．尼伯龙根之歌"></a>2．尼伯龙根之歌</h1><pre><code>(deathsong.cpp)
+【时空限制】
+ 时间限制：1s
+ 空间限制：128MB
+【问题描述】
+尼伯龙根，又称“死人之国”，这里的一切都是没有生命的存在。
+三年前，楚子航与父亲楚天骄在此遭遇龙王奥丁，楚天骄牺牲自己使楚子航得以逃离。
+机缘巧合之下，路明非从 10 号高架路进入了尼伯龙根，被困于此，与此同时，奥丁持
+昆古尼尔跨八足骏马前去追杀陈墨瞳，为拯救师姐，路明非必须走出尼伯龙根。
+整个尼伯龙根可视为一张 n 个结点，m 条边的有向无环图，1 号结点为路明非当前所在
+的高架桥，n 号结点为尼伯龙根的出口，路明非不知道出口的位置，所以每到一个结点，他
+会随机选出一条边走下去，若无路可走就只能被永远地困在尼伯龙根里。
+求路明非走出尼伯龙根的概率，答案对 998244353 取模。
+【输入格式】
+第一行：两个整数 n,m
+接下来 m 行：每行两个整数 x,y 表示 x 到 y 有一条单向边
+【输出格式】
+一个整数，表示路明非走出尼伯龙根的概率在模 998244353 意义下的值
+注：模意义下，除以一个数等于乘上这个数的逆元,根据费马小定理可求逆元
+【输入输出样例 1】
+deathsong.in 
+5 5
+1 2
+1 3
+2 5
+3 4
+3 5
+deathsong.out
+249561089
+【输入输出样例 2】
+deathsong.in 
+10 10
+1 5
+1 7
+4 2
+3 7
+5 4
+3 9
+9 7
+1 2
+7 2
+5 10
+deathsong.out
+166374059
+【数据范围】
+对于 30%的数据，n ≤ 20
+对于 60%的数据，n ≤ 2000
+对于 100%的数据，n ≤ 100000，m ≤ 5n
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> p = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> ne,to;</span><br><span class="line">&#125;edge[<span class="number">5</span>*N];</span><br><span class="line"><span class="keyword">int</span> head[N],cnt,fr[N];</span><br><span class="line">ll to[N];</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	T f=<span class="number">1</span>;a=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;a=a*<span class="number">10</span>+s-<span class="string">'0'</span>;s=getchar();&#125;</span><br><span class="line">	a*=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	edge[++cnt].to=v;</span><br><span class="line">	edge[cnt].ne=head[u];</span><br><span class="line">	head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//ll madd(ll a,ll b)&#123;return (a+b&gt;p)?(a+b-p):(a+b);&#125;</span></span><br><span class="line"><span class="function">ll <span class="title">mul</span><span class="params">(ll a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll c=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) c*=a,c%=p;</span><br><span class="line">		a*=a;</span><br><span class="line">		a%=p;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">ll ans[N];</span><br><span class="line"><span class="keyword">double</span> gl[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> sta)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	q.push(sta);</span><br><span class="line">	ans[sta]=<span class="number">1</span>;</span><br><span class="line">	gl[sta]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!fr[i])</span><br><span class="line">		q.push(i);</span><br><span class="line"><span class="comment">//		for(int j=head[i];j;j=edge[j].ne)</span></span><br><span class="line"><span class="comment">//		fr[edge[j].to]--;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=edge[i].ne)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> v=edge[i].to;</span><br><span class="line">			fr[v]--;</span><br><span class="line">			ans[v]+=(ans[u]*mul(to[u],p<span class="number">-2</span>))%p,gl[v]+=gl[u]/to[u];</span><br><span class="line">			ans[v]%=p;</span><br><span class="line">			<span class="keyword">if</span>(!fr[v]) q.push(v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans[n]%p);</span><br><span class="line"><span class="comment">//	printf("%.10lf\n",gl[n]);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"deathsong.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"deathsong.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	read(n);read(m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,u,v;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		read(u);read(v);</span><br><span class="line">		to[u]++,fr[v]++;</span><br><span class="line">		add(u,v);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><pre><code>考虑在BFS中，只要一个点入度不为零。这个点的概率就没有更新完。所以按照拓扑序来更新概率。
+</code></pre><h1 id="3．随机游走"><a href="#3．随机游走" class="headerlink" title="3．随机游走"></a>3．随机游走</h1><pre><code>  (run.cpp) 
+【时空限制】
+    时间限制：1.5s
+    空间限制：128MB
+【问题描述】
+给定一棵n个点的无根树，再给定m个询问
+每次询问给定起点和终点，从起点开始XJB走到终点的期望步数是多少？
+定义XJB走为：每次完全随机选择一条出边走出去，可以走回头路
+【输入格式】
+    第一行两个整数n,m
+    接下来n-1行每行两个整数x,y表示x到y有一条树边
+    接下来m行每行两个整数x,y表示询问从x到y的期望步数
+【输出格式】
+    共m行，每行一个整数表示每次询问的答案
+【输入输出样例1】
+5 3
+1 2
+1 3
+1 5
+3 4
+1 4
+2 3
+1 3    
+
+
+12
+6
+5
+【输入输出样例2】
+10 5
+1 2
+1 3
+3 4
+1 5
+4 6
+2 7
+2 8
+4 9
+3 10
+3 5
+7 5
+7 1
+3 9
+9 4    
+
+
+26
+23
+6
+30
+1
+</code></pre><p><img src="https://cdn.luogu.org/upload/pic/24685.png" alt="数据范围"></p>
+</div><div class="tags"><a href="/tags/诸暨培训/">诸暨培训</a><a href="/tags/题解/">题解</a></div><div class="post-nav"><a class="pre" href="/2018/08/21/Day14/">Day14</a><a class="next" href="/2018/08/21/净月潭航线/">净月潭航线</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/LCA/" style="font-size: 15px;">LCA</a> <a href="/tags/诸暨培训/" style="font-size: 15px;">诸暨培训</a> <a href="/tags/题解/" style="font-size: 15px;">题解</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/Huffman-Tree/" style="font-size: 15px;">Huffman Tree</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/暑假欢乐赛/" style="font-size: 15px;">暑假欢乐赛</a> <a href="/tags/差分约束/" style="font-size: 15px;">差分约束</a> <a href="/tags/图论/" style="font-size: 15px;">图论</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/搜索/" style="font-size: 15px;">搜索</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/搜索专题/">搜索专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/Day4/">Day4</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/DP题集/">DP题集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/Day6/">Day6</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/DP优化专题/">DP优化专题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/Day8/">Day8</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/图论/">图论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/Day10/">Day10</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/差分约束/">差分约束</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/21/Day12/">Day12</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">steven7.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
