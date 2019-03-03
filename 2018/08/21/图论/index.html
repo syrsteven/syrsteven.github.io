@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>图论 | steven7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一.算法1.一笔画问题2.拓扑排序3.最小生成树4.最短路径5.有向图的强连通分量6.无向图的双连通分量、割点与桥二.题目混合图你有一个混合图，它有n 个顶点，m 条边，其中a 条是有向边，b条是无向边。现在要求为这b 条无向边确定一个方向，使得最后的有向图上不存在环。 1 ≤ n, a, b ≤ 105, m = a + b。 不用考虑无解的情况。  输出两个数u,v表示无向边（u,v）方向为由">
+  <meta name="description" content="一.算法1.一笔画问题2.拓扑排序3.最小生成树4.最短路径5.有向图的强连通分量6.无向图的双连通分量、割点与桥">
 <meta name="keywords" content="诸暨培训,图论,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论">
 <meta property="og:url" content="http://yoursite.com/2018/08/21/图论/index.html">
 <meta property="og:site_name" content="steven7">
-<meta property="og:description" content="一.算法1.一笔画问题2.拓扑排序3.最小生成树4.最短路径5.有向图的强连通分量6.无向图的双连通分量、割点与桥二.题目混合图你有一个混合图，它有n 个顶点，m 条边，其中a 条是有向边，b条是无向边。现在要求为这b 条无向边确定一个方向，使得最后的有向图上不存在环。 1 ≤ n, a, b ≤ 105, m = a + b。 不用考虑无解的情况。  输出两个数u,v表示无向边（u,v）方向为由">
+<meta property="og:description" content="一.算法1.一笔画问题2.拓扑排序3.最小生成树4.最短路径5.有向图的强连通分量6.无向图的双连通分量、割点与桥">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T06:43:12.000Z">
+<meta property="og:updated_time" content="2019-03-03T01:34:34.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论">
-<meta name="twitter:description" content="一.算法1.一笔画问题2.拓扑排序3.最小生成树4.最短路径5.有向图的强连通分量6.无向图的双连通分量、割点与桥二.题目混合图你有一个混合图，它有n 个顶点，m 条边，其中a 条是有向边，b条是无向边。现在要求为这b 条无向边确定一个方向，使得最后的有向图上不存在环。 1 ≤ n, a, b ≤ 105, m = a + b。 不用考虑无解的情况。  输出两个数u,v表示无向边（u,v）方向为由">
+<meta name="twitter:description" content="一.算法1.一笔画问题2.拓扑排序3.最小生成树4.最短路径5.有向图的强连通分量6.无向图的双连通分量、割点与桥">
   
     <link rel="alternative" href="/atom.xml" title="steven7" type="application/atom+xml">
   
@@ -161,7 +161,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一-算法"><a href="#一-算法" class="headerlink" title="一.算法"></a>一.算法</h1><h2 id="1-一笔画问题"><a href="#1-一笔画问题" class="headerlink" title="1.一笔画问题"></a>1.一笔画问题</h2><h2 id="2-拓扑排序"><a href="#2-拓扑排序" class="headerlink" title="2.拓扑排序"></a>2.拓扑排序</h2><h2 id="3-最小生成树"><a href="#3-最小生成树" class="headerlink" title="3.最小生成树"></a>3.最小生成树</h2><h2 id="4-最短路径"><a href="#4-最短路径" class="headerlink" title="4.最短路径"></a>4.最短路径</h2><h2 id="5-有向图的强连通分量"><a href="#5-有向图的强连通分量" class="headerlink" title="5.有向图的强连通分量"></a>5.有向图的强连通分量</h2><h2 id="6-无向图的双连通分量、割点与桥"><a href="#6-无向图的双连通分量、割点与桥" class="headerlink" title="6.无向图的双连通分量、割点与桥"></a>6.无向图的双连通分量、割点与桥</h2><h1 id="二-题目"><a href="#二-题目" class="headerlink" title="二.题目"></a>二.题目</h1><h2 id="混合图"><a href="#混合图" class="headerlink" title="混合图"></a>混合图</h2><pre><code>你有一个混合图，它有n 个顶点，m 条边，其中a 条是有向边，b条是无向边。现在要求为这b 条无向边确定一个方向，使得最后的有向图上不存在环。
+        <h1 id="一-算法"><a href="#一-算法" class="headerlink" title="一.算法"></a>一.算法</h1><h2 id="1-一笔画问题"><a href="#1-一笔画问题" class="headerlink" title="1.一笔画问题"></a>1.一笔画问题</h2><h2 id="2-拓扑排序"><a href="#2-拓扑排序" class="headerlink" title="2.拓扑排序"></a>2.拓扑排序</h2><h2 id="3-最小生成树"><a href="#3-最小生成树" class="headerlink" title="3.最小生成树"></a>3.最小生成树</h2><h2 id="4-最短路径"><a href="#4-最短路径" class="headerlink" title="4.最短路径"></a>4.最短路径</h2><h2 id="5-有向图的强连通分量"><a href="#5-有向图的强连通分量" class="headerlink" title="5.有向图的强连通分量"></a>5.有向图的强连通分量</h2><h2 id="6-无向图的双连通分量、割点与桥"><a href="#6-无向图的双连通分量、割点与桥" class="headerlink" title="6.无向图的双连通分量、割点与桥"></a>6.无向图的双连通分量、割点与桥</h2><a id="more"></a>
+<h1 id="二-题目"><a href="#二-题目" class="headerlink" title="二.题目"></a>二.题目</h1><h2 id="混合图"><a href="#混合图" class="headerlink" title="混合图"></a>混合图</h2><pre><code>你有一个混合图，它有n 个顶点，m 条边，其中a 条是有向边，b条是无向边。现在要求为这b 条无向边确定一个方向，使得最后的有向图上不存在环。
 1 ≤ n, a, b ≤ 105, m = a + b。
 不用考虑无解的情况。
 
@@ -460,6 +461,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
@@ -468,7 +477,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,15 +485,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,7 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,11 +509,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">

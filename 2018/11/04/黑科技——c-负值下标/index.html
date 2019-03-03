@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>黑科技——c++负值下标 | steven7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？ F1：我们可以将负数加上一个数将其变成正数，然后储存。 那c++可不可以直接用负下标呢？其实是可以的 接下来用代码来解释这一黑科技。  123456789101112131415#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std">
+  <meta name="description" content="有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？ F1：我们可以将负数加上一个数将其变成正数，然后储存。 那c++可不可以直接用负下标呢？其实是可以的 接下来用代码来解释这一黑科技。">
 <meta name="keywords" content="黑科技">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑科技——c++负值下标">
 <meta property="og:url" content="http://yoursite.com/2018/11/04/黑科技——c-负值下标/index.html">
 <meta property="og:site_name" content="steven7">
-<meta property="og:description" content="有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？ F1：我们可以将负数加上一个数将其变成正数，然后储存。 那c++可不可以直接用负下标呢？其实是可以的 接下来用代码来解释这一黑科技。  123456789101112131415#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std">
+<meta property="og:description" content="有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？ F1：我们可以将负数加上一个数将其变成正数，然后储存。 那c++可不可以直接用负下标呢？其实是可以的 接下来用代码来解释这一黑科技。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-21T08:35:24.279Z">
+<meta property="og:updated_time" content="2019-03-03T01:35:05.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="黑科技——c++负值下标">
-<meta name="twitter:description" content="有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？ F1：我们可以将负数加上一个数将其变成正数，然后储存。 那c++可不可以直接用负下标呢？其实是可以的 接下来用代码来解释这一黑科技。  123456789101112131415#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std">
+<meta name="twitter:description" content="有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？ F1：我们可以将负数加上一个数将其变成正数，然后储存。 那c++可不可以直接用负下标呢？其实是可以的 接下来用代码来解释这一黑科技。">
   
     <link rel="alternative" href="/atom.xml" title="steven7" type="application/atom+xml">
   
@@ -167,6 +167,7 @@
 <li>那c++可不可以直接用负下标呢？其实是可以的</li>
 <li>接下来用代码来解释这一黑科技。</li>
 </ul>
+<a id="more"></a>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">1024</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1024</span>;i++) a[i]=i;</span><br><span class="line">	<span class="keyword">int</span> *mida=&amp;a[<span class="number">512</span>];</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a[<span class="number">513</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//513;</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;mida[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//513;</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a[<span class="number">511</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//511;</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;mida[<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//511;</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a[<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//2289996;炸了qwq</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>最后一行中的负下标可能产生运行时错误，因为它在内存中指向比数组的原点低 1 个字节的地址。 指针 midArray 会初始化为 intArray 的中点；因此可以对其使用正数组和负数组索引。 数组下标错误不会产生编译时错误，但它们会产生不可预知的结果。</li>
@@ -415,6 +416,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
@@ -423,7 +432,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -431,15 +440,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,7 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,11 +464,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">

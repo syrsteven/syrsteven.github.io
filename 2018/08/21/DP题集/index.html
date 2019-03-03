@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="steven7">
 <meta property="og:description" content="1.noip2015 子串12345678910111213141516171819202122232425262728293031323334353637#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;int f[2][201][201],s[2][201][201];//设s[ i ][ j ][ k ]为A用到了 i ，B用到了 j ，已经用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T06:48:52.000Z">
+<meta property="og:updated_time" content="2019-03-03T01:37:08.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DP题集">
 <meta name="twitter:description" content="1.noip2015 子串12345678910111213141516171819202122232425262728293031323334353637#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;int f[2][201][201],s[2][201][201];//设s[ i ][ j ][ k ]为A用到了 i ，B用到了 j ，已经用">
@@ -162,6 +162,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-noip2015-子串"><a href="#1-noip2015-子串" class="headerlink" title="1.noip2015 子串"></a>1.<a href="https://www.luogu.org/problemnew/show/P2679" target="_blank" rel="noopener">noip2015 子串</a></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">2</span>][<span class="number">201</span>][<span class="number">201</span>],s[<span class="number">2</span>][<span class="number">201</span>][<span class="number">201</span>];<span class="comment">//设s[ i ][ j ][ k ]为A用到了 i ，B用到了 j ，已经用了 k 个子串， 并且一定用了当前字符(A[i])时的方案数。</span></span><br><span class="line"><span class="comment">//设f[ i ][ j ][ k ]为A用到了 i ，B用到了 j ，已经用了 k 个子串， 无论用不用当前字符(A[i])时的方案数总和。</span></span><br><span class="line"><span class="keyword">int</span> n,m,k,now=<span class="number">1</span>,last=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">char</span> sa[<span class="number">1001</span>],sb[<span class="number">201</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,sa+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,sb+<span class="number">1</span>);</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		f[now][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> v=<span class="number">1</span>;v&lt;=k;v++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(sa[i]==sb[j])</span><br><span class="line">			&#123;</span><br><span class="line">				s[now][j][v]=(s[last][j<span class="number">-1</span>][v]+f[last][j<span class="number">-1</span>][v<span class="number">-1</span>])%mod;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				s[now][j][v]=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			f[now][j][v]=(s[now][j][v]+f[last][j][v])%mod;</span><br><span class="line">		&#125;swap(now,last);	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,f[last][m][k]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[i][j-1][k-1]+=f[i-1][j-1][k-1]</span></span><br><span class="line"><span class="comment">f[i][j][k]+=f[i-1][j-1][k]+f[l][j-1][k-1]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="2-LCS"><a href="#2-LCS" class="headerlink" title="2.LCS"></a>2.LCS</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">5000</span>][<span class="number">5000</span>];</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">10000</span>],b[<span class="number">10000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">	<span class="keyword">if</span>(a[i]==b[j]) f[i][j]=f[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> f[i][j]=max(f[i<span class="number">-1</span>][j],f[i][j<span class="number">-1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,f[n][n]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="3-伪最长公共子序列"><a href="#3-伪最长公共子序列" class="headerlink" title="3.伪最长公共子序列"></a>3.<a href="https://www.luogu.org/problemnew/show/P1439" target="_blank" rel="noopener">伪最长公共子序列</a></h1><pre><code>这道题看似为lcs,实则不然，看着数据范围，lcs妥妥的RE。所以要想其他方法。
 （摘自其他博客）“我们可以以第一个串为标准，用第二个串来匹配第一个串，看能匹配多少，所以，其实第一个串的每个数字其实影响不大，只有知道它对应了第二串的哪个数字就好了，那么我们为什么不把他给的串重新定义一下？”
@@ -430,6 +431,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
@@ -438,7 +447,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -446,15 +455,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,7 +463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +479,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">

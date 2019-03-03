@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="steven7">
 <meta property="og:description" content="Problem(problem.pas/c/cpp)题目描述 众所周知， Pb 是位大神犇，时不时就去 BZOJ 啊 codeforces 啊什么的玩玩， 这次无聊刷(nue)题的时候看到了一道奇怪的题目： 给你一个数 n 和有 n 个非负整数的数组 a ， 求 Max{(j- i+1)*Min{a[k]| (i&amp;lt;=k&amp;lt;= j)}| (1&amp;lt;=i&amp;lt;=n,i&amp;lt;= j&amp;lt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T06:39:02.000Z">
+<meta property="og:updated_time" content="2019-03-03T01:38:52.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Day12">
 <meta name="twitter:description" content="Problem(problem.pas/c/cpp)题目描述 众所周知， Pb 是位大神犇，时不时就去 BZOJ 啊 codeforces 啊什么的玩玩， 这次无聊刷(nue)题的时候看到了一道奇怪的题目： 给你一个数 n 和有 n 个非负整数的数组 a ， 求 Max{(j- i+1)*Min{a[k]| (i&amp;lt;=k&amp;lt;= j)}| (1&amp;lt;=i&amp;lt;=n,i&amp;lt;= j&amp;lt">
@@ -189,7 +189,8 @@ Max{(j- i+1)*Min{a[k]| (i&lt;=k&lt;= j)}| (1&lt;=i&lt;=n,i&lt;= j&lt;=n)}
 对于 100%的数据， 1&lt;=n&lt;=4000000， 0&lt;a[i]&lt;=1000000000
 </code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; <span class="title">inline</span> <span class="title">void</span> <span class="title">read</span>(<span class="title">T</span>&amp;<span class="title">a</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	T f=<span class="number">1</span>;a=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;a=a*<span class="number">10</span>+(s-<span class="string">'0'</span>);s=getchar();&#125;</span><br><span class="line">	a*=f;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line"><span class="keyword">int</span> n,s[<span class="number">4100000</span>],a[<span class="number">4100000</span>],l[<span class="number">4100000</span>],p[<span class="number">4100000</span>],top; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"problem.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"problem.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	read(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) read(a[i]);</span><br><span class="line">	a[++n]=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//the first element's position in the s[] which is less than a[i]</span></span><br><span class="line">	l[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">//position</span></span><br><span class="line">	p[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="comment">//stack</span></span><br><span class="line">	s[++top]=a[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(top&amp;&amp;a[i]&lt;s[top])</span><br><span class="line">		&#123;</span><br><span class="line">			ans=max((<span class="keyword">long</span> <span class="keyword">long</span>)s[top]*(i-l[top]<span class="number">-1</span>),ans);</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		s[++top]=a[i];p[top]=i;l[top]=p[top<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h4><pre><code>用单调栈来维护一个单调上升序列，每当当前元素小于栈顶元素，更新答案并弹出栈顶。
-</code></pre><h1 id="Tents-tents-pas-c-cpp"><a href="#Tents-tents-pas-c-cpp" class="headerlink" title="Tents(tents.pas/c/cpp)"></a>Tents(tents.pas/c/cpp)</h1><pre><code>问题描述
+</code></pre><a id="more"></a>    
+<h1 id="Tents-tents-pas-c-cpp"><a href="#Tents-tents-pas-c-cpp" class="headerlink" title="Tents(tents.pas/c/cpp)"></a>Tents(tents.pas/c/cpp)</h1><pre><code>问题描述
 Pb 去郊游啦！他来到一块空地打算在这里搭一个帐篷。
 但是,帐篷的四个支撑点不能在落在任何位置上,而只能落在一些固定点上。
 现在,他找到地面上有 N 个点可以支撑帐篷。（四个支撑点必须围成一个矩形）
@@ -481,6 +482,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
@@ -489,7 +498,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,15 +506,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +514,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,11 +530,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">
