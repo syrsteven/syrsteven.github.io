@@ -49,6 +49,8 @@
 		  <h1 class="header-author"><a href="/">steven7</a></h1>
 		</hgroup>
 		
+		<p class="header-subtitle">或许是不知梦的缘故，流离之人追逐幻影。</p>
+		
 
 		<nav class="header-menu">
 			<ul>
@@ -99,6 +101,8 @@
 			  <h1 class="header-author js-header-author">steven7</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>或许是不知梦的缘故，流离之人追逐幻影。<i class="icon icon-quo-right"></i></p>
+			
 			
 			
 				
@@ -133,6 +137,89 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-黑科技——c-负值下标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/04/黑科技——c-负值下标/">黑科技——c++负值下标</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/04/黑科技——c-负值下标/" class="archive-article-date">
+  	<time datetime="2018-11-04T09:01:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>有时我们会用vis数组来记录一些数的出现次数或是否被访问过，此时我们经常直接将这个数作为vis的下标，但对于负数怎么办呢？</li>
+<li>F1：我们可以将负数加上一个数将其变成正数，然后储存。</li>
+<li>那c++可不可以直接用负下标呢？其实是可以的</li>
+<li>接下来用代码来解释这一黑科技。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">1024</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1024</span>;i++) a[i]=i;</span><br><span class="line">	<span class="keyword">int</span> *mida=&amp;a[<span class="number">512</span>];</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a[<span class="number">513</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//513;</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;mida[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//513;</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;a[<span class="number">511</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//511;</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;mida[<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//511;</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a[<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//2289996;炸了qwq</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后一行中的负下标可能产生运行时错误，因为它在内存中指向比数组的原点低 1 个字节的地址。 指针 midArray 会初始化为 intArray 的中点；因此可以对其使用正数组和负数组索引。 数组下标错误不会产生编译时错误，但它们会产生不可预知的结果。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">黑科技</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/04/黑科技——c-负值下标/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-哈希" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1051,88 +1138,6 @@ Fateice的数字将[1,X]分成n+1段。
 
 
   
-    <article id="post-DP优化专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/DP优化专题/">DP优化专题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/21/DP优化专题/" class="archive-article-date">
-  	<time datetime="2018-08-21T06:44:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-优化状态"><a href="#1-优化状态" class="headerlink" title="1.优化状态"></a>1.优化状态</h1><p><a href="https://www.luogu.org/problemnew/show/P1004" target="_blank" rel="noopener">方格取数</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">10</span>][<span class="number">10</span>],n;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">10</span>][<span class="number">10</span>][<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> x,y,z;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z)&amp;&amp;x!=<span class="number">0</span>&amp;&amp;y!=<span class="number">0</span>&amp;&amp;z!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		s[x][y]=z;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;=n;a++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> b=<span class="number">1</span>;b&lt;=n;b++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i][j][a][b]=max(max(dp[i<span class="number">-1</span>][j][a<span class="number">-1</span>][b],dp[i<span class="number">-1</span>][j][a][b<span class="number">-1</span>]),max(dp[i][j<span class="number">-1</span>][a<span class="number">-1</span>][b],dp[i][j<span class="number">-1</span>][a][b<span class="number">-1</span>]))+s[i][j]+s[a][b];</span><br><span class="line">		<span class="keyword">if</span>(i==a&amp;&amp;j==b) dp[i][j][a][b]-=s[a][b];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[n][n][n][n]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="一般蒟蒻（像我）只能想到四维DP-但其实i-j-a-b-可优化状态为f-k-i-a-k-i-j-a-b-在此链接大佬博客方格取数。"><a href="#一般蒟蒻（像我）只能想到四维DP-但其实i-j-a-b-可优化状态为f-k-i-a-k-i-j-a-b-在此链接大佬博客方格取数。" class="headerlink" title="一般蒟蒻（像我）只能想到四维DP,但其实i+j==a+b,可优化状态为f[k][i][a],k==i+j==a+b.在此链接大佬博客方格取数。"></a>一般蒟蒻（像我）只能想到四维DP,但其实i+j==a+b,可优化状态为f[k][i][a],k==i+j==a+b.在此链接大佬博客<a href="https://www.luogu.org/blog/user18993/solution-p1004" target="_blank" rel="noopener">方格取数</a>。</h4><p><a href="https://www.luogu.org/problemnew/show/P1541" target="_blank" rel="noopener">乌龟棋</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">351</span>];</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">41</span>][<span class="number">41</span>][<span class="number">41</span>][<span class="number">41</span>];</span><br><span class="line"><span class="keyword">int</span> c1,c2,c3,c4;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> card;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;card);</span><br><span class="line">		<span class="keyword">if</span>(card==<span class="number">1</span>) c1++;</span><br><span class="line">		<span class="keyword">if</span>(card==<span class="number">2</span>) c2++;</span><br><span class="line">		<span class="keyword">if</span>(card==<span class="number">3</span>) c3++;</span><br><span class="line">		<span class="keyword">if</span>(card==<span class="number">4</span>) c4++;</span><br><span class="line">	&#125; </span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=a[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=c1;i++)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=c2;j++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;=c3;x++)<span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;=c4;y++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(i!=<span class="number">0</span>) dp[i][j][x][y]=max(dp[i][j][x][y],dp[i<span class="number">-1</span>][j][x][y]+a[i+<span class="number">2</span>*j+<span class="number">3</span>*x+<span class="number">4</span>*y+<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span>(j!=<span class="number">0</span>) dp[i][j][x][y]=max(dp[i][j][x][y],dp[i][j<span class="number">-1</span>][x][y]+a[i+<span class="number">2</span>*j+<span class="number">3</span>*x+<span class="number">4</span>*y+<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span>(x!=<span class="number">0</span>) dp[i][j][x][y]=max(dp[i][j][x][y],dp[i][j][x<span class="number">-1</span>][y]+a[i+<span class="number">2</span>*j+<span class="number">3</span>*x+<span class="number">4</span>*y+<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span>(y!=<span class="number">0</span>) dp[i][j][x][y]=max(dp[i][j][x][y],dp[i][j][x][y<span class="number">-1</span>]+a[i+<span class="number">2</span>*j+<span class="number">3</span>*x+<span class="number">4</span>*y+<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[c1][c2][c3][c4]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2-数据结构优化"><a href="#2-数据结构优化" class="headerlink" title="2.数据结构优化"></a>2.数据结构优化</h1><p><a href="http://hzwer.com/5211.html" target="_blank" rel="noopener">Bzoj2259 新型计算机</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">诸暨培训</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/DP优化专题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1270,15 +1275,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">NOIp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,11 +1295,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+                <a href="javascript:void(0)" class="js-tag color5">NOIp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BIT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
               </li>
              
               <li class="article-tag-list-item">
