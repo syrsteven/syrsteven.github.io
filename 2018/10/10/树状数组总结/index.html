@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>树状数组总结 | steven7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://image.mamicode.com/info/201803/20180328233624383726.png">
 <meta property="og:image" content="https://cdn.luogu.org/upload/pic/37284.png">
 <meta property="og:image" content="https://cdn.luogu.org/upload/pic/37288.png">
-<meta property="og:updated_time" content="2019-03-03T01:34:43.394Z">
+<meta property="og:updated_time" content="2019-03-03T01:34:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树状数组总结">
 <meta name="twitter:description" content="写在前面：关于树状数组首先，要灵活运用树状数组，必须要弄懂lowbit. lowbit 计算的是一个数二进制的最低位。 lowbit(x)=x&amp;amp;-x; 这是为什么呢??? 对于一个正数5，它的二进制为00000000 00000000 00000000 00000101 （longlong范围内） 它的负数的原码为 10000000 00000000 00000000 00000101 （">
@@ -42,13 +42,13 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=250 src="//music.163.com/outchain/player?type=0&id=2696499764&auto=1&height=250"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300" height="250" src="//music.163.com/outchain/player?type=0&id=2696499764&auto=1&height=250"></iframe>
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
@@ -176,7 +176,7 @@ lowbit(x)=x&amp;-x;
 负数的二进制为它的原码的补码（除符号位按位取反后+1）
 也就是11111111 11111111 11111111 11111011
 所以x&amp;-x就是x的最低位
-</code></pre><p>插一幅图<img src="http://image.mamicode.com/info/201803/20180328233624383726.png" alt=""></p>
+</code></pre><p>插一幅图<img src="http://image.mamicode.com/info/201803/20180328233624383726.png" alt></p>
 <a id="more"></a>
 <p><strong>1.lowbit(x)为x的最低位</strong></p>
 <p><strong>2.tr[x]存的是x及以前的lowbit(x)-1位的值的和</strong></p>
@@ -187,9 +187,9 @@ lowbit(x)=x&amp;-x;
 我们基于问题2的“差分”思路，考虑一下如何在问题2构建的树状数组中求前缀和：
 
 位置p的前缀和
-</code></pre><p><img src="https://cdn.luogu.org/upload/pic/37284.png" alt=""></p>
+</code></pre><p><img src="https://cdn.luogu.org/upload/pic/37284.png" alt></p>
 <pre><code>可变为
-</code></pre><p><img src="https://cdn.luogu.org/upload/pic/37288.png" alt=""></p>
+</code></pre><p><img src="https://cdn.luogu.org/upload/pic/37288.png" alt></p>
 <pre><code>那么我们可以维护两个数组的前缀和：
 一个数组是 d1[i](d[i]的前缀和)。
 另一个数组是 d2[i](d[i]∗i的前缀和)。
@@ -505,6 +505,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
               </li>
              
@@ -521,15 +525,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,7 +545,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BIT</a>
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +553,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
+                <a href="javascript:void(0)" class="js-tag color4">BIT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,7 +569,7 @@ MathJax.Hub.Queue(function() {
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

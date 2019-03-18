@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>steven7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,13 +33,13 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=250 src="//music.163.com/outchain/player?type=0&id=2696499764&auto=1&height=250"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300" height="250" src="//music.163.com/outchain/player?type=0&id=2696499764&auto=1&height=250"></iframe>
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
@@ -138,6 +138,88 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-DP优化专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/21/DP优化专题/">DP优化专题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/21/DP优化专题/" class="archive-article-date">
+  	<time datetime="2018-08-21T06:44:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-优化状态"><a href="#1-优化状态" class="headerlink" title="1.优化状态"></a>1.优化状态</h1><p><a href="https://www.luogu.org/problemnew/show/P1004" target="_blank" rel="noopener">方格取数</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">10</span>][<span class="number">10</span>],n;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">10</span>][<span class="number">10</span>][<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">int</span> x,y,z;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z)&amp;&amp;x!=<span class="number">0</span>&amp;&amp;y!=<span class="number">0</span>&amp;&amp;z!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		s[x][y]=z;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>;a&lt;=n;a++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> b=<span class="number">1</span>;b&lt;=n;b++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[i][j][a][b]=max(max(dp[i<span class="number">-1</span>][j][a<span class="number">-1</span>][b],dp[i<span class="number">-1</span>][j][a][b<span class="number">-1</span>]),max(dp[i][j<span class="number">-1</span>][a<span class="number">-1</span>][b],dp[i][j<span class="number">-1</span>][a][b<span class="number">-1</span>]))+s[i][j]+s[a][b];</span><br><span class="line">		<span class="keyword">if</span>(i==a&amp;&amp;j==b) dp[i][j][a][b]-=s[a][b];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[n][n][n][n]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="一般蒟蒻（像我）只能想到四维DP-但其实i-j-a-b-可优化状态为f-k-i-a-k-i-j-a-b-在此链接大佬博客方格取数。"><a href="#一般蒟蒻（像我）只能想到四维DP-但其实i-j-a-b-可优化状态为f-k-i-a-k-i-j-a-b-在此链接大佬博客方格取数。" class="headerlink" title="一般蒟蒻（像我）只能想到四维DP,但其实i+j==a+b,可优化状态为f[k][i][a],k==i+j==a+b.在此链接大佬博客方格取数。"></a>一般蒟蒻（像我）只能想到四维DP,但其实i+j==a+b,可优化状态为f[k][i][a],k==i+j==a+b.在此链接大佬博客<a href="https://www.luogu.org/blog/user18993/solution-p1004" target="_blank" rel="noopener">方格取数</a>。</h4>
+        
+          <a class="article-more-a" href="/2018/08/21/DP优化专题/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">诸暨培训</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/21/DP优化专题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Day8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -803,92 +885,6 @@ flame.out
 
 
   
-    <article id="post-净月潭航线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/净月潭航线/">净月潭航线</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/21/净月潭航线/" class="archive-article-date">
-  	<time datetime="2018-08-21T06:23:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##【问题描述】<br>净月潭国家森林公园是吉林省著名的5A级景区，因为公园中有一深潭而命名，这个深潭是圆形的，吉林省的OIER们要在圆潭的边上建N个码头，用以建立航线（可能为0条航线），航线只能是一个码头到另一个码头，并且多条航线之间不能相交，共用码头也算相交。请OIER们算一下，共有多少建立航线的方案？</p>
-<p>##【输入格式】</p>
-<p>从文件route.in中输入数据。</p>
-<p>一行一个数N</p>
-<p>##【输出格式】</p>
-<p>输出到文件route.out中。</p>
-<p>由于结果可能很大，你只需要输出这个答案mod 12345的值。</p>
-        
-          <a class="article-more-a" href="/2018/08/21/净月潭航线/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">暑假欢乐赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/净月潭航线/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1031,6 +1027,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
               </li>
              
@@ -1047,15 +1047,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1071,7 +1067,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BIT</a>
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1079,7 +1075,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
+                <a href="javascript:void(0)" class="js-tag color4">BIT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1095,7 +1091,7 @@ MathJax.Hub.Queue(function() {
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:

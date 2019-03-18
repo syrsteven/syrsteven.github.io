@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>题解 P2468 【[SDOI2010]粟粟的书架】 | steven7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="steven7">
 <meta property="og:description" content="看了这道题的其他题解，本蒟蒻发现大部分都是将其分成两道题二分加主席树做的，本蒟蒻便来分享一波自己的蒟蒻做法–用主席树维护二维矩阵的信息。 这道题全程用主席树，不过要分情况讨论，对于r=1的情况，直接上裸的主席树，对于r=200，c=200的情况我们用主席树来维护矩阵(0,0)到(x,y)的信息，它由(x-1,y)到(0,0)的信息加上(x,0)到(x,y)的信息得到。代码如下12345678for">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-03T01:34:11.313Z">
+<meta property="og:updated_time" content="2019-03-03T01:34:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="题解 P2468 【[SDOI2010]粟粟的书架】">
 <meta name="twitter:description" content="看了这道题的其他题解，本蒟蒻发现大部分都是将其分成两道题二分加主席树做的，本蒟蒻便来分享一波自己的蒟蒻做法–用主席树维护二维矩阵的信息。 这道题全程用主席树，不过要分情况讨论，对于r=1的情况，直接上裸的主席树，对于r=200，c=200的情况我们用主席树来维护矩阵(0,0)到(x,y)的信息，它由(x-1,y)到(0,0)的信息加上(x,0)到(x,y)的信息得到。代码如下12345678for">
@@ -38,13 +38,13 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=250 src="//music.163.com/outchain/player?type=0&id=2696499764&auto=1&height=250"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300" height="250" src="//music.163.com/outchain/player?type=0&id=2696499764&auto=1&height=250"></iframe>
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
@@ -455,6 +455,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">暑假欢乐赛</a>
               </li>
              
@@ -471,15 +475,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">差分约束</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+                <a href="javascript:void(0)" class="js-tag color5">组合数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,7 +495,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BIT</a>
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +503,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
+                <a href="javascript:void(0)" class="js-tag color4">BIT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,7 +519,7 @@ MathJax.Hub.Queue(function() {
         </div>
         <ul class="search-ul">
           <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
-            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            缺失模块。<br>1、请确保node版本大于6.2<br>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br> npm i hexo-generator-json-content --save<br><br>
             3、在根目录_config.yml里添加配置：
 <pre style="font-size: 12px;" q-show="jsonFail">
   jsonContent:
