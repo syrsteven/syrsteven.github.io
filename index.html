@@ -139,6 +139,128 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-顺序结构与选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/28/顺序结构与选择/">顺序结构与选择</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/28/顺序结构与选择/" class="archive-article-date">
+  	<time datetime="2020-07-28T11:31:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="顺序结构与选择"><a href="#顺序结构与选择" class="headerlink" title="顺序结构与选择"></a>顺序结构与选择</h1><h2 id="循序结构"><a href="#循序结构" class="headerlink" title="循序结构"></a>循序结构</h2><p>程序由若干条语句组成，各语句按照顺序一条一条地执行，这种结构叫做顺序结构。顺序结构是程序的最基本结构。</p>
+<p>如下便是一个简单的顺序结构</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a,b,s;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">    s=a+b;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,s);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在主函数中，按照从上到下的顺序一次运行语句：</p>
+<ul>
+<li>首先定义三个变量s,a,b</li>
+<li>输入a,b</li>
+<li>将a+b的值赋予s</li>
+<li>输出s</li>
+</ul>
+<h2 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h2><p>在现实世界中，在解决问题的过程中，不可避免地遇到需要进行选择的情况。这时，程序执行的顺序需要发生变化，而非从前向后逐一执行。此时我们便需要用到选择结构。</p>
+<p>选择类语句包括if语句和switch语句，用它们来解决实际应用中按不同的情况进行不同处理的问题。</p>
+<h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><p>if语句是最基础，常用的选择语句。基本结构如下：</p>
+<pre><code>if(条件1)
+{
+    若满足条件1，则进入该大括号，按顺序向下执行，
+}
+else if(条件2)
+{
+    若不满足条件1，但满足条件2，则进入该大括号，按顺序向下执行。
+}
+...
+else if(条件n)
+{
+    若不满足以上所有条件，但满足条件n，则进入该大括号，按顺序向下执行。
+}
+else
+{
+    若所有条件都不满足，则进入该大括号，按顺序向下执行。
+}
+</code></pre><p>解释 ：其中 else if 语句的数量没有限制，据实际应用而定。但是，else if 必须跟在 if 后使用，else 必须跟在 if 或 else if 后使用。if 可以单独使用。</p>
+<p>举个栗子：</p>
+<h3 id="小明，小红，小亮有点无聊，于是决定玩一个游戏，他们从一堆数字中，随意抽出两个未知的数字-a-b-。小明猜测-a-gt-b-小红猜测-a-lt-b-小亮猜测-a-b。现在他们请你写一个程序对给定的两个数-a-b-判断谁猜的正确。"><a href="#小明，小红，小亮有点无聊，于是决定玩一个游戏，他们从一堆数字中，随意抽出两个未知的数字-a-b-。小明猜测-a-gt-b-小红猜测-a-lt-b-小亮猜测-a-b。现在他们请你写一个程序对给定的两个数-a-b-判断谁猜的正确。" class="headerlink" title="小明，小红，小亮有点无聊，于是决定玩一个游戏，他们从一堆数字中，随意抽出两个未知的数字 a,b 。小明猜测 a&gt;b , 小红猜测 a&lt;b , 小亮猜测 a=b。现在他们请你写一个程序对给定的两个数 a,b 判断谁猜的正确。"></a>小明，小红，小亮有点无聊，于是决定玩一个游戏，他们从一堆数字中，随意抽出两个未知的数字 a,b 。小明猜测 a&gt;b , 小红猜测 a&lt;b , 小亮猜测 a=b。现在他们请你写一个程序对给定的两个数 a,b 判断谁猜的正确。</h3><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>一行输入两个数字a,b</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>若小明正确，则输出1，若小红正确，则输出2，若小亮正确，则输出3，</p>
+<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p>输入：<br>1   2</p>
+<p>输出：<br>2</p>
+<p>程序如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="keyword">if</span>(a&gt;b) <span class="built_in">printf</span>(<span class="string">"1\n"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a&lt;b) <span class="built_in">printf</span>(<span class="string">"2\n"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"3\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><p>应用条件语句可以很方便地使程序实现分支，但是出现分支比较多的时候，虽然可以用嵌套的if语句来解决，但是程序结构会显得复杂，其至凌乱。为方便实现多情况选择，C++提供了一种switch开关语句。</p>
+<p>switch的基本结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">switch</span>（表达式）</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span>  常量表达式<span class="number">1</span>:</span><br><span class="line">        语句序列<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span>  常量表达式<span class="number">2</span>:</span><br><span class="line">        语句序列<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    …… </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span>  常量表达式n:</span><br><span class="line">        语句序列n;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">         语句序列n+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">该语句中可以使用一次或多次case标号，但只能使用一次default标号，或者省略整个default部分；多个case标号也允许使用在同一个语句序列的前面；每个语句标号有保留字case和后面的常量表达式及冒号组成，每个常量表达式通常为字面常量，如常数或字符。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h3><pre><code>switch语句执行过程分为以下3步描述。
+      (1)计算出switch后面圆括号内表达式的值，假定为M，若它不是整型，系统将自动舍去其小数部分，只取其整数部分作为结果值。
+      (2)依次计算出每个case后常量表达式的值，假定它们为M1、M2、…，同样若它们的值不是整型，则自动转换为整型。
+      (3)让M依次同M1、M2、…进行比较，一旦遇到M与某个值相等，则就从对应标号的语句开始执行；在碰不到相等的情况下，若存在default子句，则就执行其冒号后面的语句序列，否则不执行任何操作；当执行到复合语句最后的右花括号时就结束整个switch语句的执行。
+</code></pre><p>举个栗子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(a)</span><br><span class="line">     &#123;  </span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            x++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            y++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            z++;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"error"</span>;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(ch)</span><br><span class="line">&#123;</span><br><span class="line">        <span class="keyword">case</span> ‘a‘:</span><br><span class="line">        <span class="keyword">case</span> ‘A‘:</span><br><span class="line">            d1=(x+y)/<span class="number">2</span>;</span><br><span class="line">            d2=x*y<span class="number">-2</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> ‘b‘:</span><br><span class="line">        <span class="keyword">case</span> ‘B‘:</span><br><span class="line">            d1=(a+b)/<span class="number">2</span>;</span><br><span class="line">            d2=a*b<span class="number">-2</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"input error!"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><pre><code>1.case语句后的各常量表达式的值不能相同，否则会出现错误码。
+2.每个case或default后，可以包含多条语句，不需要使用“{”和“}”括起来。
+3.各case和default子句的先后顺序可以变动，这不会影响程序执行结果。
+4. default子句可以省略，default后面的语句末尾可以不必写break。
+</code></pre><p>例题：根据从键盘上输入的表示星期几的数字，对应输出它的英文名称。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">      <span class="keyword">int</span> weekday;</span><br><span class="line">      <span class="built_in">cin</span>&gt;&gt;weekday;</span><br><span class="line">      <span class="keyword">switch</span>(weekday)</span><br><span class="line">      &#123;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">1</span>:<span class="built_in">cout</span>&lt;&lt;<span class="string">"Monday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">2</span>: <span class="built_in">cout</span>&lt;&lt;<span class="string">"Tuesday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">3</span>: <span class="built_in">cout</span>&lt;&lt;<span class="string">"Wednesday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">4</span>: <span class="built_in">cout</span>&lt;&lt;<span class="string">"Thursday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">5</span>: <span class="built_in">cout</span>&lt;&lt;<span class="string">"Friday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">6</span>: <span class="built_in">cout</span>&lt;&lt;<span class="string">"Saturday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> <span class="number">7</span>: <span class="built_in">cout</span>&lt;&lt;<span class="string">"Sunday"</span>&lt;&lt;<span class="built_in">endl</span>; <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">default</span>:<span class="built_in">cout</span>&lt;&lt;<span class="string">"input  error!"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="练习："><a href="#练习：" class="headerlink" title="练习："></a>练习：</h2><p>1、输入三个数a，b，c，打印出最大者。</p>
+<p>2、输入三角形的三边，判断它是否是直角三角形。</p>
+<p>3、输入三角形的三个边，判断它是何类型的三角形（等边DB？等腰DY？一般YB？）。</p>
+<p>4、输入三个数，按由大到小顺序打印出来。</p>
+<p>5、对一批货物征收税金。价格在1万元以上的货物征税5%，在5000元以上，1万元以下的货物征税3%，在1000元以上，5000元以下的货物征税2%，1000元以下的货物免税。编写一程序，读入货物价格，计算并输出税金。</p>
+<p>6、输入某学生成绩，根据成绩的好坏输出相应评语。如果成绩在90分以上，输出评语：优秀（outstanding）。如果成绩在60分到90分之间，输出评语：良好（satisfactory）。如果成绩不足60分，输出评语：不及格（unsatisfactory）。</p>
+<p>更多练习请见：<a href="https://www.luogu.com.cn/training/101#problems" target="_blank" rel="noopener">https://www.luogu.com.cn/training/101#problems</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/28/顺序结构与选择/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-OI省选知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -707,94 +829,6 @@
 
 
   
-    <article id="post-当小球遇上盒子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/08/当小球遇上盒子/">当小球遇上盒子</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/08/当小球遇上盒子/" class="archive-article-date">
-  	<time datetime="2018-11-08T02:10:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong> 众所周知,小球和盒子是一对相爱相杀的好基友，他们的每一次出现都会让本蒟蒻十分痛苦。 下面本蒟蒻将总结一下之前见过的类型 </strong></p>
-<h2 id="1-球相同，盒子不同，不能有空盒"><a href="#1-球相同，盒子不同，不能有空盒" class="headerlink" title="1.球相同，盒子不同，不能有空盒"></a>1.球相同，盒子不同，不能有空盒</h2><ul>
-<li><p>这类题可以用隔板法来做，等价于在n个数,之间插入m-1个板，将其分为m组。</p>
-</li>
-<li><p>$ans=c_{n-1}^{m-1}$</p>
-</li>
-</ul>
-<h2 id="2-球相同，盒子不同，可以有空盒"><a href="#2-球相同，盒子不同，可以有空盒" class="headerlink" title="2.球相同，盒子不同，可以有空盒"></a>2.球相同，盒子不同，可以有空盒</h2><ul>
-<li><p>这个类型其实是上一个类型的翻版，由于隔板法不能有空盒，所以我们先在每一个盒子里放一个小球。然后就等价于将$n+m$各元素放到$m$个盒子里。</p>
-</li>
-<li><p>$ans=c_{n+m-1}^{m-1}$</p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/11/08/当小球遇上盒子/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">组合数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/08/当小球遇上盒子/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -917,11 +951,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -933,19 +967,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">网络流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -969,6 +999,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">NOIp</a>
               </li>
              
@@ -977,7 +1011,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -985,15 +1019,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
               </li>
             
             <div class="clearfix"></div>

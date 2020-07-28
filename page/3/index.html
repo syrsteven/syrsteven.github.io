@@ -139,6 +139,119 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Day6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/21/Day6/">Day6</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/21/Day6/" class="archive-article-date">
+  	<time datetime="2018-08-21T06:46:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写这篇博客，异常想吐槽。题目名竟然是“简，单，题”，但题一点也不简单qwq.</p>
+<h1 id="1-简"><a href="#1-简" class="headerlink" title="1.简"></a>1.简</h1><pre><code>【问题描述】
+一天 fateice 给了 fjzzq2002 一道简单题。
+定义“n-好排列”为 1 到 n 的排列中，满足任何一个数都比前面的所有数大或者小。
+比如“1 2 3 4”就是一个“4-好排列”，而“4 3 1 2”就不是一个“4-好排列”。
+给出 n，求“n-好排列”个数。
+fjzzq2002 一眼秒了，加了多组数据，把题目扔给了你。
+良心出题人为了输出方便，加了答案对 p 取模。
+
+【输入格式】
+输入文件名为 jian.in。
+第一行，一个数 T，表示数据组数。
+接下来 T 行，每行两个数， n 和 p，含义如题所示。
+【输出格式】
+输出文件名为 jian.out
+对于每组数据，一个数，表示答案。
+
+输入：
+2 
+233
+10 233
+输出：
+2
+46
+
+【数据规模与约定】
+对于 30% 的数据， 1 ≤ n ≤ 10；
+对于 60% 的数据， 1 ≤ n ≤ 106, 1 ≤ p ≤ 109；
+对于 100% 的数据， 1 ≤ n, p ≤ 1018, 1 ≤ T ≤ 104。
+</code></pre>
+        
+          <a class="article-more-a" href="/2018/08/21/Day6/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">诸暨培训</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/21/Day6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-DP优化专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -765,126 +878,6 @@ Max{(j- i+1)*Min{a[k]| (i&lt;=k&lt;= j)}| (1&lt;=i&lt;=n,i&lt;= j&lt;=n)}
 
 
   
-    <article id="post-Day18" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/Day18/">Day18</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/21/Day18/" class="archive-article-date">
-  	<time datetime="2018-08-21T06:35:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1．魔法少女小焰"><a href="#1．魔法少女小焰" class="headerlink" title="1．魔法少女小焰"></a>1．魔法少女小焰</h1><pre><code>(flame.cpp)
-【时空限制】
-时间限制：1s
-空间限制：128MB
-【问题描述】
-“谁都无法相信未来，谁都无法接受未来。”
-“越是重复，就越是偏离你和我生活过的时间。心意也相互偏离，言语也渐渐无法相通。
-我想我大概早已经迷路了。
-“要拯救你，这是我最初的心意，而到如今，这是最后留下的唯一路标。”
-“轮回，无论几次，我依然选择轮回，无数次的探寻，寻找唯一的出口，寻找能将你从
-绝望命运中拯救出来的道路。鹿目圆，我唯一的朋友，为了你，即使陷入永恒的迷宫，我也
-会毫不介意！”
-“这才是人类情感的极致，比希望更火热，比绝望更深切的东西——是爱。”
-晓美焰为了拯救自己唯一的朋友鹿目圆，使之避免称为魔法少女的命运，在平行时空中
-不断地穿梭轮回。
-假设有 N 个平行时空，每时空都有一个维数，编号为 i 的时空的维数是𝑎௜，为了避免
-跨越维数相差较大的时空引起自身的毁灭，晓美焰每次只能跨越维数相差不超过 D 的时空。
-晓美焰可以从任意一个时空开始跨越，且只能从编号较小的时空跨越到编号较大的时空，
-求她能跨越的最大时空数。
-【输入格式】
-第一行两个正整数 N,D
-第二行 N 个整数表示编号为 i 的时空的维度𝑎௜
-【输出格式】
-一个整数表示答案
-【输入输出样例 1】
-flame.in 
-6 3
-5 7 3 6 10 9
-flame.out
-4
-【输入输出样例 2】
-flame.in 
-8 6
-4 7 9 5 8 1 9 10
-flame.out
-7
-【数据范围】
-对于 30%的数据，N ≤ 10
-对于 60%的数据，N ≤ 2000
-对于 100%的数据，N, |𝑎i| ≤ 10^5, 0 ≤ D ≤ 100//注意a可小于零
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/08/21/Day18/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">诸暨培训</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/Day18/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1007,11 +1000,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,19 +1016,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">网络流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1059,6 +1048,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">黑科技</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">NOIp</a>
               </li>
              
@@ -1067,7 +1060,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1075,15 +1068,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">平衡树</a>
               </li>
             
             <div class="clearfix"></div>
